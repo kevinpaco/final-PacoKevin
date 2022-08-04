@@ -78,7 +78,12 @@ div#logging{
 	background-position-x: 200px ;
 	border-radius: 15px;
 }
-
+div#titulo{
+	margin-top:auto;
+	width:400px;
+	background-color: blue;
+   
+}
 div#opcional{
 	display:none;
 }
