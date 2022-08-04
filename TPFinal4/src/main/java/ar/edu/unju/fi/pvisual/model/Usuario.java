@@ -19,6 +19,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -44,6 +45,7 @@ public class Usuario implements Serializable {
 	  
 	  @Column(name = "DNI")
 	  @NotNull(message = "Debe ingresar su DNI")
+	  @Min(value = 10000000, message="El dni debe tener minimo 8 dijitos")
 	  private Long dni;
 	  
 	 @Column(name = "EMAIL")

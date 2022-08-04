@@ -94,22 +94,14 @@ public class OfertasController {
 		       model.addAttribute("idOferta", ofertaLaboralService.buscarOferta(id));
 		       OfertaLaboral buscarOferta = ofertaLaboralService.buscarOferta(id);
 				buscarOferta.setCantidadVacantes(buscarOferta.getCantidadVacantes()-1);
-				if(buscarOferta.getCantidadVacantes() <= 0 ) {
-					buscarOferta.setDisponible(false);
-					ofertaLaboralService.guardarOferta(buscarOferta);
-				}else {
-					if(buscarOferta.getCantidadVacantes() > 0){
-				       buscarOferta.setDisponible(true);
-				       ofertaLaboralService.guardarOferta(buscarOferta);
-					}
-				}
+				ofertaLaboralService.guardarOferta(buscarOferta);
 		       logger.info("Se muestra la informacion del Postulante");
 			return "ver_dato_postulante";
 		}
 		
 		  @GetMapping("/eliminar/{id}")
 		    public String eliminarOferta(@PathVariable("id")Long id) {
-		    	
+		    	 
 		    	ofertaLaboralService.eliminarOferta(id);
 		    	logger.info("Se elimina la ofefrta");
 		    	return "redirect:/empleador/principal";
