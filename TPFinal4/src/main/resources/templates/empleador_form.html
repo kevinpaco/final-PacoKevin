@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/5.1.3/css/bootstrap.min.css}" />
+	<script src="/webjars/jquery/3.6.0/jquery.min.js" type="text/javascript"> </script>
+	<script src="/webjars/popper.js/2.9.3/umd/popper.min.js" type="text/javascript"> </script>
+	<script src="/webjars/bootstrap/5.1.3/js/bootstrap.min.js" type="text/javascript"> </script>
+	<script src="https://kit.fontawesome.com/6e3d8211f7.js" crossorigin="anonymous"></script>
+	<meta charset="utf-8">
+	<title>empleador</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+</head>
+
+<body id="body2">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+				<div class="container">
+					<div class="container text-center">
+						<div>
+							<h4 th:if="${datosEmpleador.id == null}">Registro de Empleador</h4>
+						</div>
+						<div>
+							<h4 th:unless="${datosEmpleador.id == null}"> Editar mis Datos</h4>
+						</div>
+					</div>
+					<form class="row g-2" th:action="@{/empleador/guardar}" method="POST" th:object="${datosEmpleador}">
+					
+					   <input type="hidden" th:field="*{id}" th:value="${datosEmpleador.id}" />
+						<div class="col-md-6">
+							<label>Cuit: </label>
+							<input  class="form-control" type="number" name="cuit" th:field="*{cuit}" placeholder="ingrese su cuit">
+							<!--<div class="text-danger" th:if="${#fields.hasErrors('cuit')}" th:errors="*{cuit}"> </div>-->
+						</div>
+						<div class="col-md-6">
+							<label>email: </label>
+							<input class="form-control" type="email" name="email" th:field="*{email}" placeholder="ingrese su email">
+							<div class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"> </div>
+						</div>
+						<div class="col-md-6">
+							<label>Telefono: </label>
+							<input class="form-control" type="number" name="telef" th:field="*{telefono}" placeholder="ingrese su telefono">
+							<!--th:value="*{fecha}"
+		    <!--<div class="text-danger" th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"> </div>-->
+						</div>
+						<div class="col-md-6">
+							<label>Domicilio: </label>
+							<input class="form-control" type="text" name="dom" th:field="*{domicilio}" placeholder="ingrese su domicilio">
+							<div class="text-danger" th:if="${#fields.hasErrors('domicilio')}" th:errors="*{domicilio}">
+							</div>
+						</div>
+						<div class="col-md-6">
+							<label>Provincia: </label>
+							<input class="form-control" type="text" name="dom" th:field="*{provincia}" placeholder="ingrese su provincia">
+							<div class="text-danger" th:if="${#fields.hasErrors('provincia')}" th:errors="*{provincia}">
+							</div>
+						</div>
+						<!--<lavel>Provincia</lavel>
+                  <select>
+                         <input class="hidden" value="Buenos Aires" th:field="*{provincia}">
+                        <option value="Buenos Aires">Buenos Aires</option>
+                        <option value="Catamarca">Catamarca</option>
+                        <option value="Chaco">Chaco</option>
+                        <option value="Chubut">Chubut</option>
+                        <option value="Cordoba">Cordoba</option>
+                        <option value="Corrientes">Corrientes</option>
+                        <option value="Entre Rios">Entre Rios</option>
+                        <option value="Formosa">Formosa</option>
+                        <option value="Jujuy">Jujuy</option>
+                        <option value="La Pampa">La Pampa</option>
+                        <option value="La Rioja">La Rioja</option>
+                        <option value="Mendoza">Mendoza</option>
+                        <option value="Misiones">Misiones</option>
+                        <option value="Neuquen">Neuquen</option>
+                        <option value="Rio Negro">Rio Negro</option>
+                        <option value="Salta">Salta</option>
+                        <option value="San Juan">San Juan</option>
+                        <option value="San Luis">San Luis</option>
+                        <option value="Santa Cruz">Santa Cruz</option>
+                        <option value="Santa Fe">Santa Fe</option>
+                        <option value="Santiago del Estero">Santiago del Estero</option>
+                        <option value="Terra del Fuego">Terra del Fuego</option>
+                        <option value="Tucuman">Tucuman</option>  
+                  </select>  
+                
+             <br/><br/>-->
+						<div class="col-md-6">
+							<label >Nombre Comercial: </label>
+							<input class="form-control" type="text" name="nom_c" th:field="*{nombreComercial}" placeholder="ingrese su Nombre Comercial">
+							<!--th:value="*{fecha}"-->
+							<div class="text-danger" th:if="${#fields.hasErrors('nombreComercial')}"
+								th:errors="*{nombreComercial}"> </div>
+						</div>
+						<div class="col-md-6">
+							<label >Inicio de Actividad: </label>
+							<input class="form-control" type="date" name="ini_Ac" th:field="*{inicioActividad}" placeholder="inicio de actividad">
+							<div class="text-danger" th:if="${#fields.hasErrors('inicioActividad')}"
+								th:errors="*{inicioActividad}"> </div>
+						</div>
+						<div class="col-md-6">
+							<label>Pagina Web: </label>
+							<input class="form-control" type="text" name="pag" th:field="*{paginaWeb}" placeholder="ingrese su Pagina Web">
+							<!--th:value="*{fecha}"-->
+							<div class="text-danger" th:if="${#fields.hasErrors('paginaWeb')}" th:errors="*{paginaWeb}">
+							</div>
+						</div>
+						<div class="mb-3">
+							<label>Contraseña: </label>
+							<input class="form-control" type="password" name="contra" th:field="*{contrasena}" placeholder="ingrese su contraseña">
+							<div class="text-danger" th:if="${#fields.hasErrors('contrasena')}"
+								th:errors="*{contrasena}"> </div>
+						</div>
+						<div class="col-md-6">
+							<label>Razon Social: </label>
+							<textarea id="idmensaje" name="mensaje" cols="20" rows="5" th:field="*{razonSocial}"
+								placeholder="ingrese comosimientos de informatica">
+							</textarea>
+							<!--<input class="form-control" type="text" name="raz" th:field="*{razonSocial}" placeholder="ingrese razon sacial">
+							<!--th:value="*{fecha}"-->
+							<div class="text-danger" th:if="${#fields.hasErrors('razonSocial')}"
+								th:errors="*{razonSocial}"> </div>
+						</div>
+						<div class="col-md-6">
+							<label >Descripcion: </label>
+							<textarea id="idmensaje" name="mensaje" cols="20" rows="5" th:field="*{descripcion}"
+								placeholder="ingrese Descripcion">
+							</textarea>
+							<!--<input class="form-control" type="text" th:field="*{descripcion}" placeholder="ingrese descripcion">
+							<!--th:value="*{fecha}">-->
+							<div class="text-danger" th:if="${#fields.hasErrors('descripcion')}"
+								th:errors="*{descripcion}"> </div>
+						</div>
+						<div class="box-footer">
+						<button type="submit" class="btn btn-success"><i class="fa-solid fa-floppy-disk"></i>&nbsp;Enviar</button>
+						</div>
+						<!--<a th:href="@{/voto/votado/${email}" class="btn btn-primary"> Elegir </a>-->
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<body>
+
+</html>
