@@ -34,7 +34,14 @@
 			</div>
 		</div>
 	</nav>
-
+	<div class="col-7">
+     <div class="card" th:each="curso:${cursos}">
+      <div class="row g-3">
+      <p class="col-md-6"><strong>usted se inscribio al curso de: </strong> <span th:text="${curso.nombre}" ></span ></p>
+       <p class="col-md-6"><strong>duracion: </strong> <span th:text="${curso.duracion}" ></span ></p>
+     </div>
+     </div>
+	</div>
 	  
 		<form class="row g-3" th:action="@{/usuario/principal}" >
 	    <div class="col-md-6"> 

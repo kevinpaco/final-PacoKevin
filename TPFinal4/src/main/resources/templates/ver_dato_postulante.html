@@ -10,6 +10,15 @@
        <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">     
 </head>
  <body id="body2">
+    <div class="card" th:each="oferta:${idOferta}">
+       <div th:if="${oferta.disponible == true}">
+         <p ><strong>Estado: </strong> <span>Disponible</span ></p>
+       </div>
+       
+       <div th:unless="${oferta.disponible == true}">
+          <p ><strong>Estado: </strong> <span >Ya no hay vacantes</span ></p>
+       </div>
+    </div> 
      
    <div class="container1">
        <div class="col-7" th:each="dato:${datoPostulante}" id="">

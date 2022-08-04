@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import ar.edu.unju.fi.pvisual.model.Curso;
 import ar.edu.unju.fi.pvisual.model.OfertaLaboral;
 import ar.edu.unju.fi.pvisual.model.Usuario;
 import ar.edu.unju.fi.pvisual.service.OfertaLaboralService;
@@ -79,6 +80,10 @@ public class UsuarioController {
 			usuario.setContraseña(null);
 			session.setAttribute("g", usuario);
 			model.addAttribute("dad", usuarioService.buscarUsuario(usuario.getId()));
+			
+			Set<Curso> curso = usuario.getCurso();
+			model.addAttribute("cursos", curso);
+			
 			List<OfertaLaboral> listarOferta = ofertaService.filtrarOferta(palabraClave);
 			model.addAttribute("datosOfertas", listarOferta);
 		}
