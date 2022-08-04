@@ -15,10 +15,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 
 	@Autowired
 	private UserDetailsServiceImp userDetails;	
-	
-	@Autowired
-	private UserDetailsServiceImp2 userDetailsEmp;
-	
+		
 	@Autowired
 	private AutenticacionSuccessHandler autentication;
 	
