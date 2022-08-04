@@ -71,7 +71,7 @@ public class OfertaLaboral {
 	@JoinColumn(name = "empleador_id")
 	private Empleador empleador2; 
 	
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany
 	@JsonBackReference
 	@JoinTable(name = "OfertasLaborales_Usuarios",
 	joinColumns = @JoinColumn(name = "Oferta_ID", referencedColumnName = "Oferta_ID"),

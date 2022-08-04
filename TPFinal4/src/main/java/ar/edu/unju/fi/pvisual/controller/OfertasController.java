@@ -93,7 +93,8 @@ public class OfertasController {
 		       model.addAttribute("datoPostulante", listCurriculum );
 		       model.addAttribute("idOferta", ofertaLaboralService.buscarOferta(id));
 		       OfertaLaboral buscarOferta = ofertaLaboralService.buscarOferta(id);
-				buscarOferta.setCantidadVacantes(buscarOferta.getCantidadVacantes()-1);
+				
+		       buscarOferta.setCantidadVacantes(buscarOferta.getCantidadVacantes()-1);
 				ofertaLaboralService.guardarOferta(buscarOferta);
 		       logger.info("Se muestra la informacion del Postulante");
 			return "ver_dato_postulante";

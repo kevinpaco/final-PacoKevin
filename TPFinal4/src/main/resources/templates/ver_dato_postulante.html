@@ -13,6 +13,11 @@
      
    <div class="container1">
        <div class="col-7" th:each="dato:${datoPostulante}" id="">
+         <div th:if="${dato.nombre == null}">
+               <h3>Ningun postulante aun</h3>
+         </div>
+         <div th:unless="${dato.nombre == null}">
+         
          <div class="card" >
          <div class="row g-3">
          <h5 class="text-center">Curriculum Vitae</h5 >
@@ -54,6 +59,7 @@
          </div>
        </div> 
        </div>
+   </div>
        <br> </br>
        
        <script type="text/javascript"> 

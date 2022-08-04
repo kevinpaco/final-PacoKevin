@@ -60,8 +60,18 @@
             <p><strong>Requisitos: </strong> <span th:text="${oferta.requisitos}"> Blockchain y Bitcoin</span ></p>
             <p><strong>Contacto: </strong> <span th:text="${oferta.datosContacto}"> Blockchain y Bitcoin</span ></p>
             <p><strong>Jornada de Trabajo: </strong> <span th:text="${oferta.jornada}"> Blockchain y Bitcoin</span ></p>
+            <div th:if="${oferta.CantidadVacantes > 0}">
             <p><strong>Vacantes: </strong> <span th:text="${oferta.cantidadVacantes}"> Blockchain y Bitcoin</span ></p>
-            <p><a class="btn btn-info" th:href="@{/usuario/postularse/}+${oferta.id}" role="button">Postularse &raquo;</a></p>
+            </div>
+            <div th:unless="${oferta.CantidadVacantes > 0}">
+            <p><strong>Vacantes: </strong> <span>Vancantes Completas</span ></p>
+            </div>
+            <div th:if="${oferta.disponible == true}">
+               <p><a class="btn btn-info" th:href="@{/usuario/postularse/}+${oferta.id}" role="button">Postularse &raquo;</a></p>
+            </div>
+            <div th:unless="${oferta.disponible == true}">
+               <p><strong>Estado: </strong> <span >Ya no Hay Vacantes</span ></p>
+            </div>
          </div>
        </div> 
        </div>
