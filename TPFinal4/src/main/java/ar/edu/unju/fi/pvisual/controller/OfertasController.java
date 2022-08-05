@@ -76,13 +76,14 @@ public class OfertasController {
 		}
 	}
 
+	   Long idOferta1;
 		@GetMapping("/postulante/{id}")
 		public String verDatosPostulante(@PathVariable("id")Long id,Model model) {
 			/*List<Usuario> listPostulante = ofertaLaboralService.buscarOferta(id).getUsuario();	  
 		    Usuario buscarPostulante = usuarioService.buscarUsuario(listPostulante.get(0).getId());
 		    Long b = buscarPostulante.getId();
 		    System.out.println(b);*/			
-			Curriculum listOferta2 = ofertaLaboralService.buscarOferta(id).getUsuario().get(0).getCurriculum().get(0);
+			List<Usuario> listOferta2 = ofertaLaboralService.buscarOferta(id).getUsuario();
 		   
 		   List<Curriculum> listCurriculum = ofertaLaboralService.buscarOferta(id).getUsuario().get(0).getCurriculum();
 		   System.out.println(listCurriculum.get(0).getId());
@@ -94,6 +95,7 @@ public class OfertasController {
 		       model.addAttribute("datoPostulante", listOferta2 );
 		       model.addAttribute("idOferta", ofertaLaboralService.buscarOferta(id));
 		       OfertaLaboral buscarOferta = ofertaLaboralService.buscarOferta(id);
+				idOferta1 = buscarOferta.getId();
 				
 		       buscarOferta.setCantidadVacantes(buscarOferta.getCantidadVacantes()-1);
 				ofertaLaboralService.guardarOferta(buscarOferta);
@@ -122,6 +124,10 @@ public class OfertasController {
 			  
 			  Curriculum buscarCurriculum = curriculumService.buscarCurricullum(usuarioService.buscarUsuario(id).getCurriculum().get(0).getId());
 			  model.addAttribute("datoPostulante", buscarCurriculum);
+			  
+			  OfertaLaboral listOferta = ofertaLaboralService.buscarOferta(idOferta1);
+			  model.addAttribute("idOferta", listOferta);
+			  System.out.println(listOferta.getId());
 			  return "ver-curriculum-postulante";
 		  }
 }

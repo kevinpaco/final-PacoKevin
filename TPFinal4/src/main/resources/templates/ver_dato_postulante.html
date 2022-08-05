@@ -40,12 +40,20 @@
              <a th:href="@{/oferta/datoPostulante/}+${dato.id}" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i>&nbsp; Ver CV</a>
              <br></br>
            <div th:each="oferta:${idOferta}"> 
-            <a th:href="@{/oferta/postulante/}+${oferta.id}"  class="btn btn-info" width="10px;">Incorporar</a>
+            <a th:href="@{/oferta/postulante/}+${oferta.id}"  onclick="incorporar(this)" class="btn btn-info" width="10px;">Incorporar</a>
            </div>
            </td>
       </tr>
      </table>
      </div>
+     <script type="text/javascript"> 
+         function incorporar(elemento){
+	               var ok = confirm('Se incorporo Exitosamente al postulante');
+	               if(ok){
+		                    elemento.nextElementSibling.submit();
+	                         }
+                     }
+     </script>
   <!-- <div class="container1">
        <div class="col-7" th:each="dato:${datoPostulante}" id="">
          <div th:if="${dato.nombre == null}">

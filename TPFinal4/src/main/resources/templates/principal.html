@@ -59,11 +59,18 @@
             </div>
             <div class="row"> 
             <p><a class="btn btn-secondary" role="button" th:href="@{/oferta/postulante/}+${oferta.id}">Ver Datos de Postulantes &raquo;</a></p>
-            <p><a class="btn btn-danger" role="button" th:href="@{/oferta/eliminar/}+${oferta.id}">Eliminar Oferta</a></p>
+            <p><a class="btn btn-danger" role="button" onclick="eliminarOferta(this)" th:href="@{/oferta/eliminar/}+${oferta.id}">Eliminar Oferta</a></p>
             </div>
          </div>
        </div> 
        </div>
-       
+        <script>
+           function eliminarOferta(elemento){
+	               var ok = confirm('¿Estas seguro de eliminar esta Oferta?');
+	               if(ok){
+		                    elemento.nextElementSibling.submit();
+	                         }
+                     }
+     </script>
 <body>
 </html>

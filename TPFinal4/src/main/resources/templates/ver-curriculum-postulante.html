@@ -50,10 +50,9 @@
 			      <p class="col-md-6"><strong>Fecha de Inicio: </strong> <span th:text="${#temporals.format(dato.fechaInicioU,'dd/MM/YYYY')}"> Blockchain y Bitcoin</span ></p>
 			      <p class="col-md-6"><strong>Fecha de fin: </strong> <span th:text="${#temporals.format(dato.fechaFinU,'dd/MM/YYYY')}"> Blockchain y Bitcoin</span ></p>			      
 			  </div>
-			  
-            <div class="row" th:each="oferta:${idOferta}"> 
-            <p><a class="btn btn-secondary" role="button" th:href="@{/oferta/postulante/}+${oferta.id}"> Incorporar Postulante &raquo;</a></p>
-            </div>
+			  <!--<div th:each="oferta:${idOferta}"> 
+            <a th:href="@{/oferta/postulante/}+${oferta.id}"  class="btn btn-info" width="10px;">Incorporar</a>
+           </div>-->
          </div>
          </div>
        </div> 

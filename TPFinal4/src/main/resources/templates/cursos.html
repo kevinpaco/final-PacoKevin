@@ -29,7 +29,7 @@
             <h6 class="card-title"><strong>Publicado: </strong> <span th:text="${curso.fechaPublicasion}"> 18-07-2022</span ></h6>
             <h7 class="card-title"><strong>Durecion de Curso: </strong> <span th:text="${curso.duracion}"> 18-07-2022</span ></h7>
             <p th:text="${curso.descripcion}"> Empresa internacional esta buscando personal con experiencia en desarrollo de DApps (Decentralized APPlication) para desarrollar plataforma de pagos basada en Bitcoin y criptomonedas.</p >
-             <p><a class="btn btn-secondary" th:href="@{/cursos/guardar/}+${curso.id}" role="button">Incribirse &raquo;</a></p>
+             <p><a class="btn btn-secondary" onclick="inscripcion(this)" th:href="@{/cursos/guardar/}+${curso.id}" role="button">Incribirse &raquo;</a></p>
              <!--<div th:action="@{/cursos/guardar}" method="POST">
             <imput type="hidden" th:field="*{id}" th:value="${curso.id}">
             <button type="submit" class="btn btn-primary"> Inscribirse</button>            
@@ -37,7 +37,15 @@
             </div>
         </div> 
         </div>
-        
+         <script>
+           function inscripcion(elemento){
+	               var ok = confirm('La Inscripcion fue un Exito');
+	               if(ok){
+		                    elemento.nextElementSibling.submit();
+	                         }
+                     }
+         
+     </script>
 
 </body>
 </html>
