@@ -158,5 +158,5 @@ public class Curso {
 		return ""+nombre;
 	}	
 	
-	
+		
 }
