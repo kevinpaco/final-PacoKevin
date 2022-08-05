@@ -27,9 +27,10 @@ public class CursoController {
 	private UsuarioService usuarioService;
 
 	private Long usuarioId;
-
+ 
 	@GetMapping("/crear")
 	public String mostrarCurso(Model model) {
+		
 		Curso cursos = new Curso("Desarrollo Web",
 				"En este curso aprenderás a crear tu sitio web partiendo del prototipo en papel. Te sumergirás en las mejores prácticas del desarrollo web, trabajando con HTML y CSS",
 				"Programacion", 0, "02/04/2022", "10 semanas");
@@ -58,12 +59,12 @@ public class CursoController {
 		// arreglar las veses q el curso se guarda en las base de datos
 		return "";
 	}
-
+   
 	@GetMapping({ "/listar/{id}", "/listar" })
 	public String ver(@PathVariable("id") Long id, Curso curso, Model model) {
-
+       
 		usuarioId = id;
-
+		
 		model.addAttribute("cursos", cursoService.listarCurso());
 		return "cursos";
 	}
@@ -79,5 +80,10 @@ public class CursoController {
 		usuarioService.guardarUsuario(usuario);
 
 		return "redirect:/usuario/principal";
+	}
+	@GetMapping("/buscar/{id}")
+	public String buscarCurso(@PathVariable("id")Long id,Model model) {
+		model.addAttribute("cursos", cursoService.buscarCurso(id));
+		return "cursos";
 	}
 }

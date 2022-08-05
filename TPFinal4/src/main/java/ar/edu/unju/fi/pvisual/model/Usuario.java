@@ -79,6 +79,8 @@ public class Usuario implements Serializable {
 	@NotEmpty(message = "Debe ingresar la Contraseña" )
 	 private String contraseña;
 	
+	private String nombre;
+	
 	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL )
 	private List<Curriculum> curriculum = new ArrayList<Curriculum>();
 	
@@ -177,6 +179,16 @@ public class Usuario implements Serializable {
 
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
+	}
+	
+	
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
 	@Override

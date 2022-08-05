@@ -50,4 +50,13 @@ public class UsuarioServiceImp implements UsuarioService {
 		return usuarioReposotory.findByDni(dni);
 	}
 
+	@Override
+	public List<Usuario> filtrarProvincia(String Provincia) {
+		// TODO Auto-generated method stub
+		if(Provincia == null) {
+			return usuarioReposotory.findAll();
+		}else {
+		return usuarioReposotory.filtrarProvincia(Provincia);}
+	}
+
 }

@@ -20,6 +20,10 @@
 				aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
+			<div class="navbar-nav">
+					<a class="nav-link active" aria-current="page" th:href="@{/curriculum/editar/}+${dato.id}">Ver CV</a>
+
+				</div>
 			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 				<div class="navbar-nav">
 					<a class="nav-link active" aria-current="page" th:href="@{/cursos/listar/}+${dato.id}">Cursos</a>
@@ -38,14 +42,21 @@
      <div class="card" th:each="curso:${cursos}">
       <div class="row g-3">
       <p class="col-md-6"><strong>usted se inscribio al curso de: </strong> <span th:text="${curso.nombre}" ></span ></p>
-       <p class="col-md-6"><strong>duracion: </strong> <span th:text="${curso.duracion}" ></span ></p>
+     
+       <p class="col-md-6"> <a class="link-active" th:href="@{/cursos/buscar/}+${curso.id}">Detalles</a></p>
      </div>
      </div>
 	</div>
-	<div class="container" id="titulo">
-	 
+	
+	<div th:each="crear:${dad}">
+	<div th:if="${crear.curriculum == null}">
+	<div class="container" id="titulo"> 
 	  <h4 class="text-center">Se sugiere crear un Curriculum Vitae para postularse a una Oferta</h4 >
 	</div>
+	</div>
+	<div th:unless="${crear.curriculum == null}"> </div>
+	</div>
+	
 		<form class="row g-3" th:action="@{/usuario/principal}" >
 	    <div class="col-md-6"> 
 	       <label>Filtrar: </label>

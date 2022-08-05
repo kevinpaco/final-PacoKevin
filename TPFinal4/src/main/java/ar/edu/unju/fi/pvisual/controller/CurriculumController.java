@@ -56,7 +56,17 @@ public class CurriculumController {
 		Usuario encontrarUsuario = usuarioService.buscarUsuario(id);
 		curriculum.setUsuario(encontrarUsuario);
 		curriculumService.guardarCurricullum(curriculum);
+		
+        encontrarUsuario.setNombre(curriculum.getNombre());
+        usuarioService.guardarUsuario(encontrarUsuario);
 		logger.info("Se guarda el Curriculum");
 		 return "redirect:/usuario/principal";}
+	}
+	
+	@GetMapping("/editar/{id}")
+	public String editarCurriculum(@PathVariable("id")Long id,Model model) {
+		Curriculum buscarCurriculum = usuarioService.buscarUsuario(id).getCurriculum().get(0);
+		model.addAttribute("datos", buscarCurriculum);
+		return "curriculum";
 	}
 }

@@ -117,7 +117,7 @@ public class UsuarioController {
 		logger.info("el Ciudadano se postula y se envia el curriculum al Empleador");
 		return "redirect:/usuario/principal";
 	}
-
+  
 	@GetMapping("/editar/{id}")
 	public String editarUsuario(@PathVariable("id") Long id, Model model) {
 		Usuario usuarioEncontrado = usuarioService.buscarUsuario(id);

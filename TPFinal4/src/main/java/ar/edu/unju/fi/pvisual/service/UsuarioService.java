@@ -15,4 +15,6 @@ public interface UsuarioService {
 	public void eliminarUsuario(Long id);
 
 	public Usuario findByDni(Long dni);
+	
+	public List<Usuario> filtrarProvincia(String Provincia);
 }

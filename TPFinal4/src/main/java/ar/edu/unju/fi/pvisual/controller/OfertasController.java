@@ -10,6 +10,7 @@ import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -90,7 +91,7 @@ public class OfertasController {
 		           System.out.println(i);
 		    }*/
 		      //Aqui tengo que enviar listCurriculum porque listOferta2 solo esta de prueva y los dos solo debuelven 1 objeto
-		       model.addAttribute("datoPostulante", listCurriculum );
+		       model.addAttribute("datoPostulante", listOferta2 );
 		       model.addAttribute("idOferta", ofertaLaboralService.buscarOferta(id));
 		       OfertaLaboral buscarOferta = ofertaLaboralService.buscarOferta(id);
 				
@@ -107,4 +108,20 @@ public class OfertasController {
 		    	logger.info("Se elimina la ofefrta");
 		    	return "redirect:/empleador/principal";
 		    }
+		  
+		  @GetMapping("/perfiles")
+		  public String perfilesPostulantes(@Param("palabraClave")String palabraClave,Model model) {
+			  
+			  model.addAttribute("datosPostulante", usuarioService.filtrarProvincia(palabraClave));
+			  
+			  return "perfiles";
+		  }
+		  
+		  @GetMapping("/datoPostulante/{id}")
+		  public String datoPsotulantes(@PathVariable("id")Long id,Model model) {
+			  
+			  Curriculum buscarCurriculum = curriculumService.buscarCurricullum(usuarioService.buscarUsuario(id).getCurriculum().get(0).getId());
+			  model.addAttribute("datoPostulante", buscarCurriculum);
+			  return "ver-curriculum-postulante";
+		  }
 }

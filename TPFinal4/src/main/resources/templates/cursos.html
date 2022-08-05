@@ -12,7 +12,15 @@
 </head>
 
 <body id="body2">
-
+ <nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<div class="container-fluid">
+			<a class="navbar-brand" th:href="@{/usuario/principal}">Inicio</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+				aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>		
+			</div>
+	</nav>
         <div class="container"  th:each="curso:${cursos}">
         <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
             <div class="col-md-9">
