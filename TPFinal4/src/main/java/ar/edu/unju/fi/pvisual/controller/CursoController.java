@@ -84,6 +84,7 @@ public class CursoController {
 		cursoService.guardarCurso(cursos3);
 		
 		model.addAttribute("cursos", cursoService.listarCurso());
+		model.addAttribute("dad", usuarioService.buscarUsuario(id));
 		return "cursos";
 	}
 

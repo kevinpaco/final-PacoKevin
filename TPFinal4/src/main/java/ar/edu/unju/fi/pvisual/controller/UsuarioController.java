@@ -125,6 +125,7 @@ public class UsuarioController {
 		model.addAttribute("datos", usuarioEncontrado);
 		idUsuario = usuarioEncontrado.getId();
 		logger.info("Se muestra el formulario Editar");
+		model.addAttribute("dad", usuarioService.buscarUsuario(id));
 		return "usuario_form";
 	}
 

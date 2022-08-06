@@ -13,6 +13,29 @@
 </head>
 
 <body id="body2">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid" th:each="dato:${datos}">
+    <a class="navbar-brand" th:href="@{/oferta/crear/}+${dato.id}">Crear Oferta Laboral</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav" >
+        <a class="nav-link active" aria-current="page" th:href="@{/empleador/editar/}+${dato.id}">Mis Datos</a>
+       
+      </div>
+      <div class="navbar-nav" >
+        <a class="nav-link active" aria-current="page" th:href="@{/oferta/perfiles}">Busqueda de Perfiles</a>
+       
+      </div>
+      <div class="navbar-nav" >
+        <a class="nav-link active" aria-current="page" th:href="@{/empleador/principal}">Inicio</a>
+       
+      </div>
+    </div>
+  </div>
+</nav>
+<br></br>
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
@@ -133,7 +156,12 @@
 						</div>
 						<div class="box-footer">
 						<button type="submit" class="btn btn-success"><i class="fa-solid fa-floppy-disk"></i>&nbsp;Enviar</button>
+						<div th:if="${datosEmpleador.id == null}">
 						<a class="btn btn-info" th:href="@{/empleo/logging}">Cancelar</a>
+						</div>
+						<div th:unless="${datosEmpleador.id == null}">
+						
+						</div>
 						</div>
 						<!--<a th:href="@{/voto/votado/${email}" class="btn btn-primary"> Elegir </a>-->
 					</form>

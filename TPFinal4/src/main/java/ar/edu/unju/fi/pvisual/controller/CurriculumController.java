@@ -43,6 +43,7 @@ public class CurriculumController {
 		 curriculum.setUsuario(idUsuario);
 		 model.addAttribute("datos",new Curriculum());
 		 logger.info("Se muestra el formulario de curriculum");
+		 model.addAttribute("dad", usuarioService.buscarUsuario(id));
 		return "curriculum";
 	}
 	

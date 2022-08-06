@@ -85,6 +85,7 @@ public class EmpleadorController {
 		Empleador modEmpleador = empleadorService.bucarEmpleador(id);
 		model.addAttribute("datosEmpleador", modEmpleador);
 		logger.info("Se muestra el formulario editar");
+		model.addAttribute("datos", empleadorService.bucarEmpleador(id));
 		return "empleador_form";
 
 	}
