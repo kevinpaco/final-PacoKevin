@@ -67,6 +67,16 @@
 						<div class="text-danger" th:if="${#fields.hasErrors('dni')}" th:errors="*{dni}"> </div>
                        </div>
 						<br></br>
+						<label>Nombre: </label>
+						<input type="text" class="form-control" name="nombre" th:field="*{nombre}"
+							placeholder="ingrese su email">
+							<div class="text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"> </div>
+						<br></br>
+						<label>Apellido: </label>
+						<input type="text" class="form-control" name="apellido" th:field="*{apellido}"
+							placeholder="ingrese su email">
+							<div class="text-danger" th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}"> </div>
+						<br></br>
 						<label>email: </label>
 						<input type="text" class="form-control" name="email" th:field="*{email}"
 							placeholder="ingrese su email">

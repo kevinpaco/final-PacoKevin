@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import ar.edu.unju.fi.pvisual.model.Curso;
 import ar.edu.unju.fi.pvisual.model.OfertaLaboral;
 import ar.edu.unju.fi.pvisual.model.Usuario;
+import ar.edu.unju.fi.pvisual.service.CurriculumService;
 import ar.edu.unju.fi.pvisual.service.OfertaLaboralService;
 import ar.edu.unju.fi.pvisual.service.UsuarioService;
 
@@ -37,6 +38,9 @@ public class UsuarioController {
 	@Autowired
 	private UsuarioService usuarioService;
 
+	@Autowired
+	private CurriculumService curriculum;
+	
 	@Autowired
 	private OfertaLaboralService ofertaService;
 

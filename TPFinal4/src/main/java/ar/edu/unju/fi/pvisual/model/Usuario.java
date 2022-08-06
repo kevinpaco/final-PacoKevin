@@ -79,7 +79,11 @@ public class Usuario implements Serializable {
 	@NotEmpty(message = "Debe ingresar la Contraseña" )
 	 private String contraseña;
 	
+	@NotEmpty(message = "Debe ingresar su nombre" )
 	private String nombre;
+	
+	@NotEmpty(message = "Debe ingresar su apellido" )
+	private String apellido;
 	
 	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL )
 	private List<Curriculum> curriculum = new ArrayList<Curriculum>();
@@ -121,6 +125,36 @@ public class Usuario implements Serializable {
 		this.fechaNacimiento = fechaNacimiento;
 		this.contraseña = contraseña;
 	}
+	
+	
+	
+	public Usuario(Long id,
+			@NotNull(message = "Debe ingresar su DNI") @Min(value = 10000000, message = "El dni debe tener minimo 8 dijitos") Long dni,
+			@NotEmpty(message = "Debe ingresar un Mail") @Email String email,
+			@NotEmpty(message = "Debe ingresar el estado Civil") String estadoCivil,
+			@NotEmpty(message = "Debe ingresar la Provincia") String provincia,
+			@NotNull(message = "Debe ingresar su Telefono") Long telefono,
+			@NotNull @Past @NotNull(message = "Debe ingresar una fecha de Nacimiento") LocalDate fechaNacimiento,
+			String tipo, @NotEmpty(message = "Debe ingresar la Contraseña") String contraseña,
+			@NotEmpty(message = "Debe ingresar su nombre") String nombre,
+			@NotEmpty(message = "Debe ingresar su apellido") String apellido, List<Curriculum> curriculum,
+			Set<Curso> curso) {
+		super();
+		this.id = id;
+		this.dni = dni;
+		this.email = email;
+		this.estadoCivil = estadoCivil;
+		this.provincia = provincia;
+		this.telefono = telefono;
+		this.fechaNacimiento = fechaNacimiento;
+		this.tipo = tipo;
+		this.contraseña = contraseña;
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.curriculum = curriculum;
+		this.curso = curso;
+	}
+
 	public Long getDni() {
 		return dni;
 	}
@@ -189,6 +223,14 @@ public class Usuario implements Serializable {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+
+	public String getApellido() {
+		return apellido;
+	}
+
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
 	}
 
 	@Override

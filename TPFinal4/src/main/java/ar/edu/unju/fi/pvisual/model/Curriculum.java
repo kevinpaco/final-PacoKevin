@@ -32,15 +32,15 @@ public class Curriculum {
 	// CAMPO OBLIGATORIO
 	
 	@Column(name = "TELEFONO")
-	@NotNull(message = "Debe ingresar un numero de telefono")
+	//@NotNull(message = "Debe ingresar un numero de telefono")
 	private long telefono;
 
 	@Column(name = "NOMBRE")
-	@NotEmpty(message = "Debe ingresar su nombre")
+	//@NotEmpty(message = "Debe ingresar su nombre")
 	private String nombre;
 
 	@Column(name = "APELLIDO")
-	@NotEmpty(message = "Debe ingresar su apellido")
+	//@NotEmpty(message = "Debe ingresar su apellido")
 	private String apellido;
 
 	@Column(name = "CARNET_CONDUCCION")
@@ -48,20 +48,20 @@ public class Curriculum {
 
 	@Column(name = "FECHA_NACIMIENTO")
 	@DateTimeFormat(iso = ISO.DATE)
-	@Past
-	@NotNull(message = "Debe ingresar una fecha de nacimiento")
+	//@Past
+	//@NotNull(message = "Debe ingresar una fecha de nacimiento")
 	private LocalDate fecha_na;
 
 	@Column(name = "EMAIL")
-	@NotEmpty(message = "Debe ingresar su nombre")
+	//@NotEmpty(message = "Debe ingresar su nombre")
 	private String email;
 	
 	@Column(name = "DIRECCION")
-	@NotEmpty(message = "Debe ingresar su Direccion")
+	//@NotEmpty(message = "Debe ingresar su Direccion")
 	private String direccion;
 
 	@Column(name = "PAIS")
-	@NotEmpty(message = "Debe ingresar su pais")
+	//@NotEmpty(message = "Debe ingresar su pais")
 	private String pais;
 	
 	//CAMPO OPCIONAL

@@ -54,9 +54,24 @@
 			<div th:unless="${datos.id == null}">
 			     <h2 class="text-center"> Edite su Curriculum</h2 >
 			</div>
+					    
+			    <div class="col-15">
+			     <div class="card" th:each="d:${datosUsuario}">
+			      <div class="row g-3">
+			            <p class="col-md-6"><strong>nombre: </strong> <span th:text="${d.nombre}" ></span ></p>
+			            <p class="col-md-6"><strong>Apellido: </strong> <span th:text="${d.apellido}" ></span ></p>
+			            <p class="col-md-6"><strong>Email: </strong> <span th:text="${d.email}" ></span ></p>
+			             <p class="col-md-6"><strong>telefono: </strong> <span th:text="${d.telefono}" ></span ></p>
+			              <p class="col-md-6"><strong>Fecha de nacimiento: </strong> <span th:text="${d.fechaNacimiento}" ></span ></p>
+			               <p class="col-md-6"><strong>Provincia: </strong> <span th:text="${d.provincia}" ></span ></p>
+			               
+			       </div>
+			     </div>
+	           </div>
+	           
 				<form class="row g-3" th:action="@{/curriculum/guardar/}+${id}" method="POST" th:object="${datos}">
 				 <input type="hidden" th:field="*{id}" th:value="${datos.id}" />
-					<div class="col-md-6">
+					<!--<div class="col-md-6">
 						<label for="inputEmail4" class="form-label">Nombre</label>
 						<input type="text" class="form-control" id="inputEmail4" th:field="*{nombre}"
 							placeholder="ingrese su nombre">
@@ -103,7 +118,9 @@
 						<input type="text" width:"50px;" class="form-control" id="inputEmail4" placeholder="Educasion"
 							th:field="*{educasion}">
 					</div>-->
-					 <h5 class="text-center">--------CAMPO OPCIONAL--------</h5> 
+					
+					 <h5>Sus datos principales ya se registraron, ingrese los sigientes campos</h5>
+					 <h4 class="text-center">--------CAMPO OPCIONAL--------</h4> 
 					<a href="javascript:void(0);" onclick="mostrarParte1();"> opcional </a >
 					<div id="opcional">
 					<a href="javascript:void(0);" onclick="ocultarParte1();"> menos </a>-->
