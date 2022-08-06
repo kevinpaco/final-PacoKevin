@@ -111,23 +111,24 @@ public class UsuarioController {
 
 	@GetMapping("/postularse/{id}")
 	public String postularUsuario(@PathVariable("id") Long id, Model model) {
-		System.out.println(idUsuario2);
-		System.out.println(id);
+	
 		OfertaLaboral buscarOferta = ofertaService.buscarOferta(id);
 		Usuario bucarPostulante = usuarioService.buscarUsuario(idUsuario);
          Long idU = null;
-		for(int i=0; i < buscarOferta.getUsuario().size();i++) {
-    	       idU = buscarOferta.getUsuario().get(i).getId();
+        List<Usuario> usu = buscarOferta.getUsuario(); 
+      
+		for(int i=0; i < usu.size();i++) {
+    	       idU = usu.get(i).getId();
        }
-		if(idU == null) {
+		System.out.println(idU);
+		if(idU != bucarPostulante.getId()) {
     	  buscarOferta.añadirUsuario(bucarPostulante);
     	  ofertaService.guardarOferta(buscarOferta);
+    	  return "redirect:/usuario/principal";
       }else {
-		
-		ofertaService.guardarOferta(buscarOferta);}
-		
-      logger.info("el Ciudadano se postula y se envia el curriculum al Empleador");
-		return "redirect:/usuario/principal";
+    		System.out.println("solo entra por aqui");
+           logger.info("el Ciudadano se postula y se envia el curriculum al Empleador");
+		return "redirect:/usuario/principal";}
 	}
   
 	@GetMapping("/editar/{id}")
