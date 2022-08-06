@@ -115,10 +115,18 @@ public class UsuarioController {
 		System.out.println(id);
 		OfertaLaboral buscarOferta = ofertaService.buscarOferta(id);
 		Usuario bucarPostulante = usuarioService.buscarUsuario(idUsuario);
-
-		buscarOferta.añadirUsuario(bucarPostulante);
-		ofertaService.guardarOferta(buscarOferta);
-		logger.info("el Ciudadano se postula y se envia el curriculum al Empleador");
+         Long idU = null;
+		for(int i=0; i < buscarOferta.getUsuario().size();i++) {
+    	       idU = buscarOferta.getUsuario().get(i).getId();
+       }
+		if(idU == null) {
+    	  buscarOferta.añadirUsuario(bucarPostulante);
+    	  ofertaService.guardarOferta(buscarOferta);
+      }else {
+		
+		ofertaService.guardarOferta(buscarOferta);}
+		
+      logger.info("el Ciudadano se postula y se envia el curriculum al Empleador");
 		return "redirect:/usuario/principal";
 	}
   

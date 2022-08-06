@@ -37,7 +37,7 @@
 			</div>
 		</div>
 	</nav>
-	
+       </div>
 	<div class="col-7">
      <div class="card" th:each="curso:${cursos}">
       <div class="row g-3">
@@ -87,15 +87,34 @@
             <div th:unless="${oferta.CantidadVacantes > 0}">
             <p><strong>Vacantes: </strong> <span>Vancantes Completas</span ></p>
             </div>
-            <div th:if="${oferta.disponible == true}">
-               <p><a class="btn btn-info" th:href="@{/usuario/postularse/}+${oferta.id}" role="button">Postularse &raquo;</a></p>
-            </div>
-            <div th:unless="${oferta.disponible == true}">
-               <p><strong>Estado: </strong> <span >Ya no Hay Vacantes</span ></p>
-            </div>
-         </div>
+            
+            <!--<div th:each="ins:${oferta.usuario}">
+            <div th:if="${oferta.usuario == null}">-->
+            <!--<div th:each="ins:${oferta.usuario}">
+                <div th:unless="${ins.tipo == 'ciudadano'}">
+                <h6 >no estas Inscripto </h6>
+                </div>
+               <div th:unless="${ins.id == null}">
+                <h6 th:text="${ins.tipo}"> </h6>
+                </div>
+            </div> -->
+              <h6></h6>
+		            <div th:if="${oferta.disponible == true}">
+		               <p><a class="btn btn-info" th:href="@{/usuario/postularse/}+${oferta.id}" role="button">Postularse &raquo;</a></p>
+		            </div>
+		            <div th:unless="${oferta.disponible == true}">
+		               <p><strong>Estado: </strong> <span >Ya no Hay Vacantes</span ></p>
+		            </div>
+           <!-- </div>
+            <div th:unless="${oferta.usuario == null}">
+               <h6 th:text="${oferta.id}"> </h6>
+               <h6>Postulado</h6>
+            </div>-->
+            
+            
+         </div >
        </div> 
-       </div>
+       
 
        <script>
              function limpiarCampos(){
