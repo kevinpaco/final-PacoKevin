@@ -10,7 +10,7 @@
        <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">     
 </head>
  <body id="body2">
-   <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<div class="container-fluid">
 			<a class="navbar-brand" th:href="@{/empleador/principal}">Inicio</a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
@@ -19,7 +19,42 @@
 			</button>		
 			</div>
 	</nav>
- <div class="container1">
+    <div class="card" th:each="oferta:${idOferta}">
+       <div th:if="${oferta.disponible == true}">
+         <p ><strong>Estado: </strong> <span>Disponible</span ></p>
+       </div>
+    </div>
+       
+      
+       <br></br>    
+       <div class="container">  
+     <table class="table table-dark table-striped"> 
+      <tr>
+           <th>Nombre</th>
+           <th>Opciones</th>
+           
+      </tr>
+      <tr th:each="dato:${datoPostulante}">
+         <td th:text="${dato.nombre}">hhh</td>
+          <td>
+             <a th:href="@{/oferta/datoPostulante/}+${dato.id}" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i>&nbsp; Ver CV</a>
+             <br></br>
+           <div th:each="oferta:${idOferta}"> 
+            <a th:href="@{/oferta/postulante/}+${oferta.id}"  onclick="incorporar(this)" class="btn btn-info" width="10px;">Incorporar</a>
+           </div>
+           </td>
+      </tr>
+     </table>
+     </div>
+     <script type="text/javascript"> 
+         function incorporar(elemento){
+	               var ok = confirm('Se incorporo Exitosamente al postulante');
+	               if(ok){
+		                    elemento.nextElementSibling.submit();
+	                         }
+                     }
+     </script>
+  <!-- <div class="container1">
        <div class="col-7" th:each="dato:${datoPostulante}" id="">
          <div th:if="${dato.nombre == null}">
                <h3>Ningun postulante aun</h3>
@@ -59,9 +94,10 @@
 			      <p class="col-md-6"><strong>Fecha de Inicio: </strong> <span th:text="${#temporals.format(dato.fechaInicioU,'dd/MM/YYYY')}"> Blockchain y Bitcoin</span ></p>
 			      <p class="col-md-6"><strong>Fecha de fin: </strong> <span th:text="${#temporals.format(dato.fechaFinU,'dd/MM/YYYY')}"> Blockchain y Bitcoin</span ></p>			      
 			  </div>
-			  <!--<div th:each="oferta:${idOferta}"> 
-            <a th:href="@{/oferta/postulante/}+${oferta.id}"  class="btn btn-info" width="10px;">Incorporar</a>
-           </div>-->
+			  
+            <div class="row" th:each="oferta:${idOferta}"> 
+            <p><a class="btn btn-secondary" role="button" th:href="@{/oferta/postulante/}+${oferta.id}"> Incorporar Postulante &raquo;</a></p>
+            </div>
          </div>
          </div>
        </div> 
@@ -88,7 +124,6 @@
            function ocultarUniversidad(){
 	                      document.getElementById('universidad').style.display = 'none'
                                 }
-       </script>
- 
- </body>
+       </script>-->
+<body>
 </html>

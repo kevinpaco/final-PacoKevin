@@ -58,6 +58,8 @@ public class OfertasController {
 	    idEmpleador = id;
         ofertasLaborales.setEmpleador(encontrado);
         model.addAttribute("ofertas", ofertasLaborales);
+        
+        model.addAttribute("datos", encontrarEmpleador.bucarEmpleador(id));
         logger.info("Se muestra el formulario para crear una oferta Laboral");
 		return "crear_oferta";
 	}
@@ -111,7 +113,7 @@ public class OfertasController {
 		    	return "redirect:/empleador/principal";
 		    }
 		  
-		  @GetMapping("/perfiles")
+		  @GetMapping("/perfiles") 
 		  public String perfilesPostulantes(@Param("palabraClave")String palabraClave,Model model) {
 			  
 			  model.addAttribute("datosPostulante", usuarioService.filtrarProvincia(palabraClave));
