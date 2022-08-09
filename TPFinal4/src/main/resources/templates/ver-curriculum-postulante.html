@@ -19,12 +19,18 @@
 			</button>		
 			</div>
 	</nav>
+	
  <div class="container1">
+ <div th:each="nulo:${nulo}">
+   <div th:if="${nulo == null}">
+               <h3>Ningun postulante aun</h3>
+  </div>
+  <div th:unless="${nulo == null}">
        <div class="col-7" th:each="dato:${datoPostulante}" id="">
-         <div th:if="${dato.nombre == null}">
+        <!-- <div th:if="${dato.id == null}">
                <h3>Ningun postulante aun</h3>
          </div>
-         <div th:unless="${dato.nombre == null}">
+         <div th:unless="${dato.id == null}">-->
          
          <div class="card" >
          <div class="row g-3">
@@ -64,9 +70,12 @@
            </div>-->
          </div>
          </div>
-       </div> 
+       </div>
+  </div>
        </div>
    </div>
+   
+   
        <br> </br>
        
        <script type="text/javascript"> 

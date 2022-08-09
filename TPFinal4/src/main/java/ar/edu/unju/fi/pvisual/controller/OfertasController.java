@@ -1,6 +1,6 @@
 package ar.edu.unju.fi.pvisual.controller;
 
-import java.util.ArrayList;
+import java.util.ArrayList; 
 import java.util.List; 
 import java.util.Optional;
 import java.util.stream.Stream;
@@ -117,15 +117,31 @@ public class OfertasController {
 		  public String perfilesPostulantes(@Param("palabraClave")String palabraClave,Model model) {
 			  
 			  model.addAttribute("datosPostulante", usuarioService.filtrarProvincia(palabraClave));
-			  
+			  model.addAttribute("datos", usuarioService.listarUsuario());
 			  return "perfiles";
 		  }
 		  
 		  @GetMapping("/datoPostulante/{id}")
 		  public String datoPsotulantes(@PathVariable("id")Long id,Model model) {
-			  
-			  Curriculum buscarCurriculum = curriculumService.buscarCurricullum(usuarioService.buscarUsuario(id).getCurriculum().get(0).getId());
-			  model.addAttribute("datoPostulante", buscarCurriculum);
+			 // Curriculum buscarCurriculum = curriculumService.buscarCurricullum(usuarioService.buscarUsuario(id).getCurriculum().get(0).getId());
+			  List<Curriculum> listCurriculum = usuarioService.buscarUsuario(id).getCurriculum();
+			  Long idC = null;
+			  for(int i=0;i< listCurriculum.size();i++) {
+				  idC = listCurriculum.get(i).getId();
+				  System.out.println("es: "+listCurriculum.get(i).getId());
+			  }
+			  if (idC == null){
+				  System.out.println(idC);
+				 model.addAttribute("nulo", false);
+			  }
+			  else {
+				  model.addAttribute("nulo",true); 
+				  Curriculum buscarCurriculum = usuarioService.buscarUsuario(id).getCurriculum().get(0); 
+				  model.addAttribute("datoPostulante", buscarCurriculum);
+			  }
+			  System.out.println(idC);
+			 // System.out.println(buscarCurriculum.getId());
+			  //model.addAttribute("datoPostulante", usuarioService.buscarUsuario(id).getCurriculum().get(0));
 			  
 			  OfertaLaboral listOferta = ofertaLaboralService.buscarOferta(idOferta1);
 			  model.addAttribute("idOferta", listOferta);
